@@ -4,6 +4,8 @@ Overlay containing some lighter-weight versions of the Gentoo utilities from [sa
 
 ## List of ebuilds
 
+* **app-portage/showem-lite** [source](https://github.com/sakaki-/showem-lite)
+ * Provides a simple utility script (**showem-lite**(1)), which enables you to monitor the progress of a parallel **emerge**(1). A manpage is included.
 * **app-portage/genup-lite** [source](https://github.com/sakaki-/genup-lite)
  * Provides the **genup-lite**(8) script, to simplify the process of keeping your Gentoo system up-to-date. **genup-lite**(8) can automatically update the Portage tree, and all installed packages. Has interactive and non-interactive (batch) modes. A manpage is included.
 
