@@ -1,0 +1,9 @@
+# ChangeLog for app-portage/genup-lite
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*genup-lite-1.0.1 (21 Jan 2015)
+
+  21 Jan 2015; sakaki <sakaki@deciban.com> +genup-lite-1.0.1.ebuild:
+  Bump version (distcc / pump support added)
+
