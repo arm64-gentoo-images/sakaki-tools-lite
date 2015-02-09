@@ -2,6 +2,11 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*genup-lite-1.0.3 (09 Feb 2015)
+
+  09 Feb 2015; sakaki <sakaki@deciban.com> +genup-lite-1.0.3.ebuild:
+  Fix distcc-off fallback emerge behaviour in underlying
+
 *genup-lite-1.0.2 (23 Jan 2015)
 
   23 Jan 2015; sakaki <sakaki@deciban.com> +genup-lite-1.0.2.ebuild:
