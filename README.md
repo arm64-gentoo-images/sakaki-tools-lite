@@ -11,48 +11,41 @@ Overlay containing some lighter-weight versions of the Gentoo utilities from [sa
 
 ## Installation
 
-**sakaki-tools-lite** is best installed (on Gentoo) via **layman**(8).
+As of version >= 2.2.16 of Portage, **sakaki-tools-lite** is best installed (on Gentoo) via the [new plug-in sync system](https://wiki.gentoo.org/wiki/Project:Portage/Sync).
 
-The following are short form instructions. If you haven't already installed **layman**(8), do so first:
+The following are short form instructions. If you haven't already installed **git**(1), do so first:
 
-    emerge --ask --verbose app-portage/layman
-    echo 'source "/var/lib/layman/make.conf"' >> /etc/portage/make.conf
+    # emerge --ask --verbose dev-vcs/git 
 
-Make sure the `git` USE flag is set for the **app-portage/layman** package (it should be by default).
+Next, create a custom `/etc/portage/repos.conf` entry for the **sakaki-tools-lite** overlay, so Portage knows what to do. Make sure that `/etc/portage/repos.conf` exists, and is a directory. Then, fire up your favourite editor:
 
-Next, create a custom layman entry for the **sakaki-tools-lite** overlay, so **layman**(8) can find it on GitHub. Fire up your favourite editor:
-
-    nano -w /etc/layman/overlays/sakaki-tools-lite.xml
+    # nano -w /etc/portage/repos.conf/sakaki-tools-lite.conf
 
 and put the following text in the file:
+```
+[sakaki-tools-lite]
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
-    <repositories xmlns="" version="1.0">
-        <repo priority="50" quality="experimental" status="unofficial">
-    	    <name>sakaki-tools-lite</name>
-    	    <description>Various (lite variant) Gentoo utilities, from sakaki.</description>
-    	    <homepage>https://github.com/sakaki-/sakaki-tools-lite</homepage>
-    	    <owner>
-    		    <email>sakaki@deciban.com</email>
-    		    <name>sakaki</name>
-            </owner>
-    	    <source type="git">https://github.com/sakaki-/sakaki-tools-lite.git</source>
-        </repo>
-    </repositories>
+# Various (lite variant) Gentoo utilities, from sakaki
+# Maintainer: sakaki (sakaki@deciban.com)
+ 
+location = /usr/local/portage/sakaki-tools-lite
+sync-type = git
+sync-uri = https://github.com/sakaki-/sakaki-tools-lite.git
+priority = 50
+auto-sync = yes
+```
 
 Then run:
 
-    layman --sync-all
-    layman --add="sakaki-tools-lite"
+    # emaint sync --repo sakaki-tools-lite
 
-If you are running on the stable branch by default, allow **~<yourarch>** keyword files from this repository, e.g.:
+If you are running on the stable branch by default, allow **~amd64** keyword files from this repository. Make sure that `/etc/portage/package.accept_keywords` exists, and is a directory. Then issue:
 
-    echo '*/*::sakaki-tools-lite ~ppc' >> /etc/portage/package.accept_keywords
+    # echo "*/*::sakaki-tools-lite ~amd64" >> /etc/portage/package.accept_keywords/sakaki-tools-lite-repo
     
 Now you can install packages from the overlay. For example:
 
-    emerge --ask --verbose app-portage/genup-lite
+    # emerge --ask --verbose app-portage/genup-lite
 
 ## Maintainers
 
