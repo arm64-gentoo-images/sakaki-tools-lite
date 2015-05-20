@@ -39,10 +39,14 @@ Then run:
 
     # emaint sync --repo sakaki-tools-lite
 
-If you are running on the stable branch by default, allow **~amd64** keyword files from this repository. Make sure that `/etc/portage/package.accept_keywords` exists, and is a directory. Then issue:
+If you are running on the stable branch by default, allow **~ppc** or **~arm** keyword files from this repository, as appropriate. Make sure that `/etc/portage/package.accept_keywords` exists, and is a directory. Then, if running on an Excito B2 (ppc architecture), issue:
 
-    # echo "*/*::sakaki-tools-lite ~amd64" >> /etc/portage/package.accept_keywords/sakaki-tools-lite-repo
+    # echo "*/*::sakaki-tools-lite ~ppc" >> /etc/portage/package.accept_keywords/sakaki-tools-lite-repo
     
+Or, if running on an Excito B3 (arm architecture), issue:
+
+    # echo "*/*::sakaki-tools-lite ~arm" >> /etc/portage/package.accept_keywords/sakaki-tools-lite-repo
+
 Now you can install packages from the overlay. For example:
 
     # emerge --ask --verbose app-portage/genup-lite
